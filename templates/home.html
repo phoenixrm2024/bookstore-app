@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <p>Welcome <span>{{ user.username|title }}!</span></p>
+{% endif %}
+  <h1>This is our home page.</h1>
+  <img class="bookcover" src={% static "images/dfp.jpg" %}>
+{% endblock content %}

@@ -1,16 +1,22 @@
 services:
   web:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:3000
+    command: python /code/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
-      - "3000:3000"
+      - "8000:8000"
     depends_on:
       - db
     environment:
-      - "DJANGO_SECRET_KEY=django-insecure-qv3p-4=mzc#!x-fon4w1622&#r-p1tqrz*%!g%$$jx-&k1geqw&"
-
+      - 'DJANGO_SECRET_KEY=django-insecure-qv3p-4=mzc#!x-fon4w1622&#r-p1tqrz*%!g%$$jx-&k1geqw&'
+      - 'DJANGO_DEBUG=True'
+      - 'DJANGO_SECURE_SSL_REDIRECT=False'
+      - 'DJANGO_SECURE_HSTS_SECONDS=0'
+      - 'DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAIN= False'
+      - 'DJANGO_SECURE_HSTS_PRELOAD=False'
+      - 'DJANGO_SESSION_COOKIE_SECURE=False'
+      - 'DJANGO_CSRF_COOKIE_SECURE=False'
   db:
     image: postgres:16
     volumes:

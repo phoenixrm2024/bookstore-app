@@ -9,7 +9,7 @@ from .models import Book, Review
 class BookTests(TestCase):
 
     @classmethod
-    def setUpTestData(cls):  # cls: is used for object methods
+    def setUpTestData(cls):  # cls: is used for class methods
         cls.user = get_user_model().objects.create_user(
             username="reviewuser",
             email="reviewuser@email.com",
@@ -30,7 +30,7 @@ class BookTests(TestCase):
             review="An excellent review",
         )
 
-    def test_book_listing(self):  # self: is used for class methods
+    def test_book_listing(self):  # self: is used for object methods
         self.assertEqual(f"{self.book.title}", "Harry Potter")
         self.assertEqual(f"{self.book.author}", "JK Rowling")
         self.assertEqual(f"{self.book.price}", "25.00")
